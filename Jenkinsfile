@@ -44,10 +44,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Nginx deployment successful!'
+            echo 'Nginx deployment successful!'
         }
         failure {
-            echo '❌ Pipeline failed.'
+            echo 'Pipeline failed.'
         }
     }
 }
