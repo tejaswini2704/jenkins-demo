@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  // ID from Jenkins credentials
-        IMAGE_NAME = "your-dockerhub-username/myapp"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  // Jenkins DockerHub credentials
+        IMAGE_NAME = "your-dockerhub-username/nginx-app"   // Change this
     }
 
     stages {
@@ -16,22 +16,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Docker image...'
+                echo 'Building Docker image for Nginx...'
                 sh 'docker build -t $IMAGE_NAME:latest .'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // For Node.js example:
-                sh 'npm test || echo "No tests found"'
             }
         }
 
         stage('Push to DockerHub') {
             steps {
-                echo 'Pushing image to DockerHub...'
+                echo 'Pushing Nginx image to DockerHub...'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
                     sh 'docker push $IMAGE_NAME:latest'
@@ -41,18 +33,21 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying container...'
-                sh 'docker run -d -p 8080:8080 --name myapp $IMAGE_NAME:latest || echo "App already running"'
+                echo 'Deploying Nginx container...'
+                // Remove old container if exists
+                sh 'docker rm -f nginx-app || true'
+                // Run new container
+                sh 'docker run -d -p 8080:80 --name nginx-app $IMAGE_NAME:latest'
             }
         }
     }
 
     post {
         success {
-            echo 'Deployment successful!'
+            echo '✅ Nginx deployment successful!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo '❌ Pipeline failed.'
         }
     }
 }
