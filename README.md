@@ -104,3 +104,7 @@ To automatically trigger the pipeline on GitHub commits:
 
 * **Name:** Tejaswini Shirke
 
+<img width="1888" height="958" alt="Screenshot 2025-10-22 214638" src="https://github.com/user-attachments/assets/e2311fe8-5306-4bfd-b6d6-d823772ea1fd" />
+
+![Uploading Screenshot 2025-10-22 214700.png…]()
+
