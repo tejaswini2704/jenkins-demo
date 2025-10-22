@@ -106,5 +106,6 @@ To automatically trigger the pipeline on GitHub commits:
 
 <img width="1888" height="958" alt="Screenshot 2025-10-22 214638" src="https://github.com/user-attachments/assets/e2311fe8-5306-4bfd-b6d6-d823772ea1fd" />
 
-![Uploading Screenshot 2025-10-22 214700.png…]()
+<img width="1904" height="953" alt="Screenshot 2025-10-22 214700" src="https://github.com/user-attachments/assets/db33be7f-9085-4c34-b4f0-2ea05ac48cc4" />
+
 
