@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  // Jenkins DockerHub credentials
-        IMAGE_NAME = "your-dockerhub-username/nginx-app"   // Change this
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  
+        IMAGE_NAME = "tejaswinism/nginx-app"  
     }
 
     stages {
